@@ -13,10 +13,185 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="tremesh">
+      <UniqueIdentifier>{0ca07d1d-88dd-431d-bf5c-95286d13c705}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="trimesh\compute_boundingbox.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\get_boundingbox_corner.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\ICP.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\KDtree.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\load_calib.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\projectionicp.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\projectionicpestimation.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\projectionicpmapping.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\space.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\TriMesh_bounding.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\TriMesh_connectivity.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\TriMesh_curvature.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\TriMesh_io.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\TriMesh_normals.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\TriMesh_stats.cc">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="trimesh\vector_util.cpp">
+      <Filter>tremesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Align.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Octree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OctreeChunk.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="octreechunkex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OctreeIndex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="trimesh\Box.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\bsphere.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\Color.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\colorUtils.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\compute_boundingbox.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\endianutil.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\get_boundingbox_corner.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\ICP.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\KDtree.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\lineqn.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\load_calib.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\mathcompat.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\mathutil.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\projectionicp.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\projectionicpestimation.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\projectionicpheader.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\projectionicpmapping.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\space.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\strutil.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\timestamp.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\tnt_matrix.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\tnt_subscript.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\tnt_vector.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\TriMesh.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\TriMesh_algo.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\Vec.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\vector_util.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\Xform.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="trimesh\xform_io.h">
+      <Filter>tremesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Align.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="octreechunk.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="octreechunkex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="octreeindex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="trimesh\TriMesh.hbak">
+      <Filter>tremesh</Filter>
+    </None>
   </ItemGroup>
 </Project>

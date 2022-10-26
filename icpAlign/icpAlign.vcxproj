@@ -19,7 +19,67 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Align.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="OctreeChunk.cpp" />
+    <ClCompile Include="octreechunkex.cpp" />
+    <ClCompile Include="OctreeIndex.cpp" />
+    <ClCompile Include="trimesh\compute_boundingbox.cpp" />
+    <ClCompile Include="trimesh\get_boundingbox_corner.cpp" />
+    <ClCompile Include="trimesh\ICP.cc" />
+    <ClCompile Include="trimesh\KDtree.cc" />
+    <ClCompile Include="trimesh\load_calib.cpp" />
+    <ClCompile Include="trimesh\projectionicp.cpp" />
+    <ClCompile Include="trimesh\projectionicpestimation.cpp" />
+    <ClCompile Include="trimesh\projectionicpmapping.cpp" />
+    <ClCompile Include="trimesh\space.cpp" />
+    <ClCompile Include="trimesh\TriMesh_bounding.cc" />
+    <ClCompile Include="trimesh\TriMesh_connectivity.cc" />
+    <ClCompile Include="trimesh\TriMesh_curvature.cc" />
+    <ClCompile Include="trimesh\TriMesh_io.cc" />
+    <ClCompile Include="trimesh\TriMesh_normals.cc" />
+    <ClCompile Include="trimesh\TriMesh_stats.cc" />
+    <ClCompile Include="trimesh\vector_util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Align.h" />
+    <ClInclude Include="Octree.h" />
+    <ClInclude Include="octreechunk.h" />
+    <ClInclude Include="octreechunkex.h" />
+    <ClInclude Include="octreeindex.h" />
+    <ClInclude Include="trimesh\Box.h" />
+    <ClInclude Include="trimesh\bsphere.h" />
+    <ClInclude Include="trimesh\Color.h" />
+    <ClInclude Include="trimesh\colorUtils.h" />
+    <ClInclude Include="trimesh\compute_boundingbox.h" />
+    <ClInclude Include="trimesh\endianutil.h" />
+    <ClInclude Include="trimesh\get_boundingbox_corner.h" />
+    <ClInclude Include="trimesh\ICP.h" />
+    <ClInclude Include="trimesh\KDtree.h" />
+    <ClInclude Include="trimesh\lineqn.h" />
+    <ClInclude Include="trimesh\load_calib.h" />
+    <ClInclude Include="trimesh\mathcompat.h" />
+    <ClInclude Include="trimesh\mathutil.h" />
+    <ClInclude Include="trimesh\projectionicp.h" />
+    <ClInclude Include="trimesh\projectionicpestimation.h" />
+    <ClInclude Include="trimesh\projectionicpheader.h" />
+    <ClInclude Include="trimesh\projectionicpmapping.h" />
+    <ClInclude Include="trimesh\space.h" />
+    <ClInclude Include="trimesh\strutil.h" />
+    <ClInclude Include="trimesh\timestamp.h" />
+    <ClInclude Include="trimesh\tnt_matrix.h" />
+    <ClInclude Include="trimesh\tnt_subscript.h" />
+    <ClInclude Include="trimesh\tnt_vector.h" />
+    <ClInclude Include="trimesh\TriMesh.h" />
+    <ClInclude Include="trimesh\TriMesh_algo.h" />
+    <ClInclude Include="trimesh\Vec.h" />
+    <ClInclude Include="trimesh\vector_util.h" />
+    <ClInclude Include="trimesh\Xform.h" />
+    <ClInclude Include="trimesh\xform_io.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="trimesh\TriMesh.hbak" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -107,8 +167,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\trimesh</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,8 +204,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\trimesh</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

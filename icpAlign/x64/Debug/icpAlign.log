@@ -1,2 +1,14 @@
-﻿  main.cpp
+﻿  Align.cpp
+f:\work\icpalign\icpalign1\icpalign\trimesh\trimesh.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+f:\work\icpalign\icpalign1\icpalign\trimesh\trimesh.h(294): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+f:\work\icpalign\icpalign1\icpalign\octreechunk.h(7): warning C4005: “ESSLAM_API”: 宏重定义
+  f:\work\icpalign\icpalign1\icpalign\esslambaseexport.h(6): note: 参见“ESSLAM_API”的前一个定义
+  main.cpp
+f:\work\icpalign\icpalign1\icpalign\trimesh\trimesh.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+f:\work\icpalign\icpalign1\icpalign\trimesh\trimesh.h(294): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+f:\work\icpalign\icpalign1\icpalign\octreechunk.h(7): warning C4005: “ESSLAM_API”: 宏重定义
+  f:\work\icpalign\icpalign1\icpalign\esslambaseexport.h(6): note: 参见“ESSLAM_API”的前一个定义
+f:\work\icpalign\icpalign1\icpalign\main.cpp(17): warning C4305: “参数”: 从“double”到“float”截断
+f:\work\icpalign\icpalign1\icpalign\main.cpp(19): warning C4305: “参数”: 从“double”到“float”截断
+  正在生成代码...
   icpAlign.vcxproj -> F:\work\icpAlign\icpAlign1\x64\Debug\icpAlign.exe

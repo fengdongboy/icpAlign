@@ -13,6 +13,8 @@ using namespace std;
 
 namespace trimesh {
 
+	void TriMesh::dprintf(const char *format, ...)
+	{}
 // Find the face across each edge from each other face (-1 on boundary)
 // If topology is bad, not necessarily what one would expect...
 void TriMesh::need_across_edge()
