@@ -4,7 +4,7 @@
 
 Align::Align()
 {
-
+	
 }
 
 Align::~Align()
@@ -18,14 +18,18 @@ void Align::setParams(float fx, float fy, float cx, float cy)
 	m_fy = fy;
 	m_cx = cx;
 	m_cy = cy;
+	setup();
 }
 
-void Align::ProcessOneFrame(TriMeshPtr& mesh)
+bool Align::ProcessOneFrame(TriMeshPtr& mesh)
 {
 	m_xforms.push_back(trimesh::xform());
 
-	LocateOneFrame(mesh);
+	bool r = LocateOneFrame(mesh);
+	if (r)
 	FusionFrame(mesh);
+
+	return r;
 }
 
 void Align::setup()
@@ -66,7 +70,7 @@ void Align::setup()
 	m_xforms.resize(m_max_frames);
 }
 
-void Align::LocateOneFrame(TriMeshPtr& mesh)
+bool Align::LocateOneFrame(TriMeshPtr& mesh)
 {
 	if (mFirstFrame)
 	{
@@ -74,7 +78,7 @@ void Align::LocateOneFrame(TriMeshPtr& mesh)
 		{
 			mFirstFrame = false;
 		}
-
+		return true;
 	}
 	else
 	{
@@ -96,37 +100,11 @@ void Align::LocateOneFrame(TriMeshPtr& mesh)
 		if (result)
 		{
 			float error = 0.0f;
-			bool r = true;
-			result = Frame2Model(mesh, error, r);
+
+			result = Frame2Model(mesh, error);
 			if (!result) failed_reason = 2;
 		}
-
-		if (result)
-		{
-			//if (locate_data.locate_type == 0)
-			//{
-			//	std::cout << mesh->frame << " continous success." << std::endl;
-			//	std::cout << mesh->frame << " icp error:" << locate_data.rms << std::endl;
-			//}
-			//else if (locate_data.locate_type == 1)
-			//	std::cout << mesh->frame << " relocate success." << std::endl;
-		}
-		else
-		{
-			//std::cout << mesh->frame << " lost. for " << (failed_reason == 1 ? "f2f" : "f2m") << std::endl;
-			//if (m_locate_tracer && m_locate_tracer->NeedSave())
-			//{
-			//	if (failed_reason == 1)
-			//	{
-			//		m_locate_tracer->OnFFFailed(mesh, m_last_mesh.get(), m_key_frames, m_fx, m_fy, m_cx, m_cy);
-			//	}
-			//	else if (failed_reason == 2)
-			//	{
-			//		m_locate_tracer->OnFMFailed(mesh, m_octree->m_trimesh, m_fx, m_fy, m_cx, m_cy);
-			//	}
-			//}
-		}
-		//locate_data.lost = !result;
+		return result;
 	}
 }
 
@@ -197,7 +175,6 @@ void Align::FusionFrame(TriMeshPtr& mesh)
 
 bool Align::Frame2Frame(TriMeshPtr& mesh)
 {
-
 	if (m_last_mesh == nullptr) return false;
 
 	trimesh::xform xf;
@@ -227,7 +204,7 @@ bool Align::Frame2Frame(TriMeshPtr& mesh)
 	return true;
 }
 
-bool Align::Frame2Model(TriMeshPtr& mesh, float& e, bool relocate)
+bool Align::Frame2Model(TriMeshPtr& mesh, float& e)
 {
 	trimesh::xform xf = mesh->global;
 	m_icp->SetSource(mesh.get());
@@ -240,16 +217,9 @@ bool Align::Frame2Model(TriMeshPtr& mesh, float& e, bool relocate)
 	//if (m_locate_tracer) m_locate_tracer->OnAfterF2M();
 
 	e = error;
-	if (relocate)
-	{
-		if (error > m_fm_icp_rms || error < 0.0f)
-			return false;
-	}
-	else
-	{
-		if (error > m_fm_icp_rms || error < 0.0f)
-			return false;
-	}
+	if (error > m_fm_icp_rms || error < 0.0f)
+		return false;
+
 	mesh->global = xf;
 	return true;
 }
@@ -287,8 +257,6 @@ bool Align::Relocate(TriMeshPtr& mesh)
 			dest_mesh = m_key_frames.at(index);
 			xf = matrixes.at(index);
 		}
-
-		//if (m_locate_tracer) m_locate_tracer->OnAfterRelocate();
 	}
 
 	if (dest_mesh)
@@ -336,20 +304,20 @@ float Align::RelocateOnce(trimesh::TriMesh* source, trimesh::TriMesh* target, tr
 	}
 
 	//if (m_locate_tracer && m_locate_tracer->NeedSave())
-	{
-		trimesh::vec3 center = source->bbox.center();
-		for (int i = 1; i < 4; ++i)
-		{
-			trimesh::xform ixf;
-			double rad = (double)i * 90.0f * M_PIf / 180.0f;
-			if (i % 2 == 0)
-				ixf = trimesh::xform::trans(0.0f, -60.0f, 0.0f) * trimesh::xform::trans(center) * trimesh::xform::rot(rad, 0.0, 0.0, 1.0) * trimesh::xform::trans(-center);
-			else
-				ixf = trimesh::xform::trans(-60.0f, 0.0f, 0.0f) * trimesh::xform::trans(center) * trimesh::xform::rot(rad, 0.0, 0.0, 1.0) * trimesh::xform::trans(-center);
+	//{
+	//	trimesh::vec3 center = source->bbox.center();
+	//	for (int i = 1; i < 4; ++i)
+	//	{
+	//		trimesh::xform ixf;
+	//		double rad = (double)i * 90.0f * M_PIf / 180.0f;
+	//		if (i % 2 == 0)
+	//			ixf = trimesh::xform::trans(0.0f, -60.0f, 0.0f) * trimesh::xform::trans(center) * trimesh::xform::rot(rad, 0.0, 0.0, 1.0) * trimesh::xform::trans(-center);
+	//		else
+	//			ixf = trimesh::xform::trans(-60.0f, 0.0f, 0.0f) * trimesh::xform::trans(center) * trimesh::xform::rot(rad, 0.0, 0.0, 1.0) * trimesh::xform::trans(-center);
 
-			//m_locate_tracer->OnRelocateFailed(source, target, ixf, i, m_fx, m_fy, m_cx, m_cy);
-		}
-	}
+	//		//m_locate_tracer->OnRelocateFailed(source, target, ixf, i, m_fx, m_fy, m_cx, m_cy);
+	//	}
+	//}
 	xf = init_xf;
 	return error;
 }
@@ -361,10 +329,6 @@ void Align::SetLastMesh(TriMeshPtr& mesh, bool use_as_keyframe)
 	if (use_as_keyframe) m_key_frames.push_back(mesh);
 }
 
-void Align::SetProjectionICPTracer(trimesh::ProjectionICPTracer* tracer)
-{
-	//m_icp_tracer = tracer;
-}
 
 void Align::Clear()
 {

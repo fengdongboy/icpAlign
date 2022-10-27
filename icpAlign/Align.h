@@ -22,27 +22,30 @@ public:
 	Align();
 	~Align();
 
+	/// 设置相机参数
 	void setParams(float fx, float fy, float cx, float cy);
 
-	void ProcessOneFrame(TriMeshPtr& mesh);
+	/// 处理一帧点云
+	bool ProcessOneFrame(TriMeshPtr& mesh);
+
+
+
 
 	void setup();
 
-	void LocateOneFrame(TriMeshPtr& mesh);
+	bool LocateOneFrame(TriMeshPtr& mesh);
 
 	void FusionFrame(TriMeshPtr& mesh);
 
 	bool Frame2Frame(TriMeshPtr& mesh);
 
-	bool Frame2Model(TriMeshPtr& mesh, float& e, bool relocate);
+	bool Frame2Model(TriMeshPtr& mesh, float& e);
 
 	bool Relocate(TriMeshPtr& mesh);
 
 	float RelocateOnce(trimesh::TriMesh* source, trimesh::TriMesh* target, trimesh::xform& xf);
 
 	void SetLastMesh(TriMeshPtr& mesh, bool use_as_keyframe);
-
-	void SetProjectionICPTracer(trimesh::ProjectionICPTracer* tracer);
 
 	void Clear();
 

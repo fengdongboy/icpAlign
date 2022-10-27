@@ -15,10 +15,7 @@ int main()
 {
 	Align* a = new Align;
 	a->setParams(fxParams);
-	a->setup();
-	a->setParams(fxParams);
-
-	
+	bool r = false;
 	for (int i = 0; i < MESH_NUM; i++)
 	{
 		std::string str = MESH_PATH; str+="/" + std::to_string(i) + ".cloud";
@@ -26,8 +23,20 @@ int main()
 		trimesh::TriMesh * m = new trimesh::TriMesh;
 		load(*m, fin);
 		m->need_bbox();
+
+
 		TriMeshPtr mesh_ptr(m);
-		a->ProcessOneFrame(mesh_ptr);
+		r = a->ProcessOneFrame(mesh_ptr);
+		if (r == false)
+			printf("can not locate frame %d\n", i);
+		else
+		{
+			for (int i = 0; i < 16; i++)
+			{
+				printf("%f ", mesh_ptr->global[i]);
+			}
+			printf("\n");
+		}
 	}
 
 	trimesh::TriMesh& mesh = a->getFushMesh();
